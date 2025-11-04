@@ -1,0 +1,13 @@
+prettier(formatter)
+
+웹 기반
+ http or https 프로토콜 기반으로 동작하는 프로그램 작성
+=> 브라우저 해석
+=> HTML(Hyper Text Markpu Language) : 구조설계
+=> CSS(Cascading Style Sheets) : 디자인
+=> JavaScript : 동작
+
+클라이언트 <====> 서버
+   요청           응답
+
+html은 태그로 이루어져 있음 < > , </ >
