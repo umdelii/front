@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        form 태그 : 사용자로부터 입력을 받기 위한 양식을 작성하는 태근
+            action : 전송한 정보를 처리할 경로 
+            method : 정보를 서버로 전송할 때 사용하는 방식(get, post)
+            autocomplete = "on(or off)" (기본값 on) : 입력 폼에 값을 보이게 할 것이냐?(자동완성기능 사용여부)
+
+        시작 : http://121.160.42.72:5500/basic/form1.html
+        get 방식(form안에 입력한 값이 주소줄에 그대로 보임)
+        제출 : http://121.160.42.72:5500/basic/form1.html?name=%EB%8C%80%ED%9B%84&age=22
+        post 방식 : 입력한 값이 주소줄에 보이지 않음
+
+        https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%98%81%ED%99%94&ackey=29aa8o8z    
+
+        1) type="submit" : form 안 요소들을 action에 적힌 곳으로 전송
+        2) type="reset" : form 안 요소들 초기화
+        3) <label for = ""> : 제목 텍스트
+            for 속성에 input 태그에 부여한 id 속성값과 동일한 값을 사용하는 경우, 제목 클릭시 input 속성에 포커스(커서가 감)를 줄 수 있다.
+        4) type="text" : 짧은 text 입력
+        5) type="number" : 숫자만 입력 
+    -->
+    <form action="" method="get" autocomplete="off">
+      <label for="name">이름</label>
+      <input type="text" name="name" id="name" />
+      <label for="age">나이</label>
+      <input type="number" name="age" id="age" />
+      <button type="submit">제출</button>
+      <button type="reset">초기화</button>
+    </form>
+  </body>
+</html>
