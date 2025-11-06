@@ -1,0 +1,19 @@
+ul li {
+  display: inline-block;
+  margin-right: 2em;
+  border-bottom: 2px dashed darkorange;
+  /* 선 두께만 주기 */
+  border-width: 5px 10px;
+  /* 선 스타일 */
+  border-style: dashed dotted;
+  /* 선 색상 */
+  border-color: aliceblue aqua;
+}
+
+p {
+  /* margin: 8px;*/ /* padding도 동일 */
+  /* margin: 상하px 좌우px */
+  /* margin: 상px 우px 하px <--- 3개도 가능 좌는 우를 따라감*/
+  margin: 8px 16px;
+  display: inline-block;
+}

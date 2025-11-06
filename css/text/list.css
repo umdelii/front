@@ -1,0 +1,16 @@
+ul {
+  /* default -> disc, circle, square */
+  list-style: square;
+}
+
+ul li:first-child {
+  list-style: "①";
+}
+
+ol {
+  /* upper(lower) - alpha
+       upper(lower) - loman
+       decimal(default)
+    */
+  list-style: none;
+}

@@ -1,0 +1,28 @@
+/* 
+padding : 안쪽 여백
+  상하공간은 다른 요소를 밀어내며 공백을 만들지 않기에 불완전하게 적용됨
+margin : 바깥쪽 여백   
+  block요소는 정상 적용 inline요소는 좌우에만 여백 적용
+margin 병합 현상 : 요소들의 margin-top과 margin-bottom이 만났을 때
+*/
+span {
+  background-color: slateblue;
+  display: inline-block;
+  /*width: 100px;
+  height: 150px; */
+  margin: 20px;
+  padding: 20px;
+}
+
+div {
+  background-color: tomato;
+  /* display: inline-block;
+  width: 100px;
+  height: 150px; */
+  margin: 20px;
+  padding: 20px;
+}
+
+div:nth-child(even) {
+  background-color: orangered;
+}

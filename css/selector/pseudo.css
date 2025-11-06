@@ -1,0 +1,84 @@
+/* 
+ 자식 : 특정 요소 바로 밑에 존재한느 태그요소
+    ex) html 자식 : head, body
+ 자손 : 자식 + 손주 
+    ex) html 자손 : head, body, meta, title, link, ul, li, ul ...
+*/
+
+/* 자손 결합자 : 클래스+공백+선택자 */
+.outer li {
+  color: olivedrab;
+}
+
+/* 자식 결합자 : > */
+.outer > li {
+  color: dodgerblue;
+}
+
+.outer > li li {
+  text-decoration: underline;
+}
+
+/* 형제 결합자 : ~, + 
+    ~ : 나 다음 요소들
+    + : 나 다음 요소 하나
+*/
+.starter ~ li {
+  font-style: italic;
+}
+
+.starter + li {
+  font-weight: bold;
+}
+
+/* 가상 클래스 : 특정 상황을 가정하고 이름을 붙임 : : 
+    :first-child
+    :last-child
+    :nth-child(n)
+    :nth-child(odd) -> 홀수
+    :nth-child(even) -> 짝수
+    :hover -> 마우스가 오버될 때(커서올리면?)
+
+    a:link => 방문하지 않은 링크에 스타일 적용
+    a:visited => 방문한 링크에 스타일 적용
+    a:active => 요소를 활성화 했을 때 스타일 적용
+*/
+ol li:first-child,
+ol li:last-child {
+  color: yellowgreen;
+}
+
+.outer > li:not(:last-child) {
+  text-decoration: line-through;
+}
+
+ol li:nth-child(3) {
+  font-weight: bold;
+  color: deeppink;
+}
+
+ol li:nth-child(2n) {
+  background-color: antiquewhite;
+}
+
+li:hover {
+  font-weight: bold;
+  color: blue;
+}
+
+div a:link {
+  text-decoration: none;
+  color: gray;
+}
+
+div a:active {
+  color: chocolate;
+}
+
+div a:visited {
+  color: black;
+}
+
+div a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,13 @@
+/* 자간, 단어간격, 줄높이는 em권장 */
+.letter {
+  /* 글자간 간격 : 자간 */
+  letter-spacing: 0em;
+  /* 줄 간격 */
+  line-height: 1.2em;
+  font-size: 14px;
+}
+
+.word {
+  /* 단어간 간격 */
+  word-spacing: -2px;
+}
