@@ -1,0 +1,53 @@
+flex 레이아웃
+ 1. 부모 요소에 적용하는 속성
+    - display: flex;
+
+    - flex-wrap : 줄바꿈 여부
+        1. nowrap : default
+        2. wrap : 줄바꿈
+        3. wrap-reverse : 앞 요소부터 줄바뀜
+
+    - justify-content : 주 축의 정렬방법
+        1. flex-start(default) : 좌(상) -> 우(하) 왼쪽 끝으로 정렬
+        2. flex-end : 오른쪽 끝으로 정렬
+        3. center : 가운데 정렬
+        4. space-between : 남은 간격을 요소 사이에 나눠가짐(양쪽 끝에 공백없음)
+        5. space-around : 남은 간격을 mergin처럼 요소주위로 두름, 양쪽으로 
+        6. space-evenly : 모든 간격에 같은 공백 할당 이븐하게
+
+    - align-content : flex-wrap: wrap; 일 때 사용
+
+    - align-items : 주 축의 교차(반대) 축의 정렬방식
+        1. strech(default) : 자식 요소가 부모 요소의 공간(높이or길이)를 채움
+        2. flex-start : justify-content의 start와 동일
+        3. flex-end : justify-content와 동일
+        4. center : justify-content와 동일
+        5. baseline : 요소 안의 문자 기준선으로 정렬
+
+    - flex-direction : 자식을 어느 축으로 정렬할 것인가?(행,열)
+        1. row : item들을 수평으로 표시
+        2. row-reverse : 수평 역순!
+        3. column : item들을 수직 축 기준으로 표시
+        4. column-reverse : 수직 축 기준이나 item을 역순으로 표시
+
+ 2. 자식 요소에 적용하는 속성
+    - order : items 순서 설정
+        0이 default값
+        숫자가 클수록 맨 끝으로 가게 됨
+
+    - flex-grow : items 증가 비율
+        0이 default값
+        부모요소에 여백이 있는 경우 아이템 너비를 늘릴 수 있다
+        남은 공백을 비율로 나눠 가짐 
+            ex.남은 공백이 100이야 그럼 100을 3명의 자식에게 1:1:2비율로 나누는듯한
+            700의 길이에 100 자식 6명 3명에게 1.1.2로 나눠줌 そしたら?
+            100 100 100 100 125 125 150인가? 
+
+    - flex-shrink : items 감소 비율
+
+    - flex-basis : items (공간 배분 전)기본 너비 설정
+        auto(default값) -> item의 content 크기
+
+    - flex:(flex-grow flex-shrink flex-basis)도 가능 
+
+    - align-self

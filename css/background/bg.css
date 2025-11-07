@@ -1,0 +1,41 @@
+/* 
+    background
+    1) color
+    2) image
+        url() : 이미지 경로 지정
+        background-repeat : repeat;(default) 이미지 크기가 div보다 작기에 반복됨
+            repeat-x(y) : x(y)축으로 반복
+            no-repeat : 반복안해!
+            space : 간격을 주면서 반복
+            round : 그림이 잘리지 않게 크기조절시켜 넣음 
+        background-repeat: x축 y축 - 두개 섞어쓰기 가능
+
+        background-position : top left; (default)
+            top, bottom, left, right, center
+        
+        background-size : 이미지 파일등 백그라운드에 넣었을때 크기 조정
+            % : 요소 크기에 비례한 비율로 조정
+            auto : 짤림(default값) - 이미지는 원본의 크기
+            contain : 전체 영역에서 이미지의 어느 한쪽 긴 부분을 자동으로 맞추기, 100%와 비슷
+            cover : 영역에 맞춰 채워줌
+        
+        background attachment: ; - 이거 페이지 스크롤 내려도 광고 계속 따라다니는거 같은거 
+            scroll : default값 스크롤 내리면 사라짐 (원래 위치에서 고정)
+            fixed : 영역에 고정이 아니라 브라우저 창 위치(뷰포트)에 고정
+*/
+div {
+  width: 464px;
+  height: 328px;
+  border: 1px solid orange;
+  background-image: url(../images/orange-tile.png);
+  /* background-image: url(../images/bg3.jpg); */
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: contain; */
+}
+
+body {
+  background-image: url(../images/orange-tile.png);
+  background-repeat: no-repeat;
+  background-attachment: local;
+}

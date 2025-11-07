@@ -1,0 +1,51 @@
+/* 
+    position: ;
+        - 기본 배치 방식은 태그 작성 순서, 요소의 속성(block,inline)을 따라감
+        static : default값
+        fixed : 뷰포트가 기준, 위치의 기본값은 기본 배치 방식, 위치 지정하면 됨(top,btm,r,l) 
+         - 이게 진짜 사이트에 광고 스크롤 내려도 따라다니는거
+        relative
+         1) 기준 : 원래 있던 위치
+         2) 위치 지정하면 원래 있던 위치에서 준 값만큼 이동
+         3) 다른 요소에 영향 안줌
+        absolute 
+         1) 기준 : 뷰포트
+          static이 아닌 부모 요소 지정하면 기준이 변경됨
+          부모요소 대부분은 relative로 사용
+         2) 위치 : 위와 동일
+         3) 부모 요소를 기준으로 배치
+        sticky 
+         1) 기준 : 스크롤 영역
+         2) 위치 : 위와 동일
+        z-index : 요소의 쌓이는 순서를 지정
+         -default(static)인 경우는 html 태그 작성 순서로 쌓임
+         -static을 제외한 position속성이 있는 경우 해당 요소가 가장 위에 쌓임
+         -position이 다 있는 경우 z-index 속성 값이 높을수록 위에 쌓임
+         -z-index값도 같다면 html 태그작성 순서
+         
+*/
+.grand-parent {
+  width: 800px;
+  height: 500px;
+  border: 2px dashed lightgray;
+}
+
+.parent {
+  width: 500px;
+  height: 400px;
+  border: 2px dashed gray;
+}
+
+.child {
+  width: 100px;
+  height: 100px;
+  background-color: tomato;
+  font-size: 30px;
+  border: 1px solid black;
+}
+
+.fixed {
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+}

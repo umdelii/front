@@ -29,8 +29,9 @@ div {
   font-size: 5em;
   text-align: center;
   border: 2px solid black;
-  /* content를 원으로 만들고 싶어 */
+  /* content를 원으로 만들고 싶어 (보더를 꺾는거임)*/
   border-radius: 50%;
   /* text-align: center;는 좌우가운데정렬, 상하도 가운데 정렬하고싶어 */
   line-height: 300px;
+  padding: 0;
 }

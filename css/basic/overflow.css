@@ -1,0 +1,14 @@
+/* 
+    overflow : 부모요소보다 자식요소가 더 큰 경우 자식을 나타내는 방법
+    1) auto : 스크롤바 자동 생성
+    2) hidden : 넘치는 부분 숨김
+    3) scroll : 스크롤바 생성(가로 스크롤바도 생성)
+    4) visible : default 값 , 다 보여줌
+*/
+p {
+  width: 500px;
+  height: 100px;
+  background-color: silver;
+  border: 1px solid black;
+  overflow: visible;
+}

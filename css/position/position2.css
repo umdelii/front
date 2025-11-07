@@ -1,0 +1,45 @@
+/* 
+    slide
+     boder
+     width 800px, height 300px
+     가운데 정렬
+     padding 10px
+
+    a
+     배경색 #333
+     줄높이 50
+     글자색 white
+ */
+
+.slide {
+  border: 2px solid black;
+  width: 800px;
+  height: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.slide img {
+  width: 300px;
+  height: 200px;
+  float: left;
+}
+
+.controls a {
+  background-color: #333;
+  line-height: 50px;
+  color: white;
+  position: absolute;
+  top: calc(50% - 25px);
+  /* 공백 있을 때 줄넘어가기 자동으로 하지마 */
+  white-space: nowrap;
+}
+
+.prev {
+  right: 100%;
+}
+
+.next {
+  left: 100%;
+}
