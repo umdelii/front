@@ -1,0 +1,29 @@
+/* 상속 inherit
+    글자관련 속성들이 주로 상속됨
+    -  color, font-*, text-align, text-decoration, visibility ...
+
+    우선순위
+    1. 명시도 점수가 높은 선언이 우선
+        !important > 인라인 선언(추천x) > id 선택자 > class 선택자 > 태그 > 전체 > 상속
+    2. 명시도가 동일할 때 나중에 작성한 것이 우선
+*/
+.ecosystem {
+  color: red;
+}
+
+.animal {
+  color: darkblue;
+}
+
+#text {
+  color: brown;
+}
+
+.area p {
+  color: green;
+}
+
+p {
+  /* color: chartreuse !important; */
+  color: blueviolet;
+}

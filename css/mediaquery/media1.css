@@ -1,0 +1,32 @@
+/* 반응형 웹
+    @media (){}
+    @media (min-width:481px) and (max-width:769px){}
+    @media (min-width:481px),(max-width:769px){}   <- or
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100px;
+  background-color: yellow;
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    background-color: green;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    background-color: aqua;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    background-color: brown;
+  }
+}
