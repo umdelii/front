@@ -1,0 +1,33 @@
+.box {
+  width: 150px;
+  height: 100px;
+  background-color: yellowgreen;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  float: left;
+}
+
+.box1 {
+  width: 200px;
+  height: 200px;
+  background-color: darkgreen;
+
+  /* float가 left건 right건 해제해줘 */
+  clear: both;
+}
+
+/* 다른 방법 : 가상 요소 이용*/
+.box2 {
+  width: 200px;
+  height: 200px;
+  background-color: cyan;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
