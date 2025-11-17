@@ -1,0 +1,26 @@
+//  callBack 함수 : 함수를 다른 함수의 전달인자로 전달, 전달된 함수 호출 가능
+// function ask(question, yes, no) {
+//   if (confirm(question)) {
+//     yes();
+//   } else no();
+// }
+
+// function showOk() {
+//   alert("동의하셨습니다.");
+// }
+
+// function showCancel() {
+//   alert("취소하셨습니다.");
+// }
+
+// ask("동의하십니까?", showOk, showCancel);
+
+function callTenTimes(callBack) {
+  for (let index = 0; index < 10; index++) {
+    callBack();
+  }
+}
+
+const callBack = () => console.log("함수호출");
+
+callTenTimes(callBack);
