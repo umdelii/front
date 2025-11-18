@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button type="button" onclick="showDialog()" style="color: aqua"> -->
+    <button type="button">클릭 1</button>
+    <button type="button">클릭 2</button>
+    <script>
+      function showDialog() {
+        alert("Hi");
+      }
+
+      // 클릭요소와 함수 연결
+      //   document.querySelector("button").addEventListener("click", showDialog);
+
+      //   const firstBtn = document.querySelector("button");
+      //   firstBtn.addEventListener("click", showDialog);
+
+      // 클릭 2 버튼 클릭 시 'bye' 메세지 호출
+      //   document
+      //     .querySelector("body > button:nth-of-type(2)")
+      //     .addEventListener("click", () => alert("bye"));
+
+      //   firstBtn.nextElementSibling.addEventListener("click", () => alert("bye"));
+
+      // button 한꺼번에 찾아서
+      const btns = document.querySelectorAll("button");
+      btns[0].addEventListener("click", showDialog);
+      btns[1].addEventListener("click", () => alert("bye"));
+    </script>
+  </body>
+</html>

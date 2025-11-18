@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header" class="header"><i>헤더 요소</i></h1>
+    <ul>
+      <li class="item">목록1</li>
+      <li class="item">목록2</li>
+      <li class="item">목록3</li>
+      <li class="item">목록4</li>
+    </ul>
+    <button type="button">변경</button>
+    <script>
+      // document 요소 찾기
+      // document.getElementById("아이디값"); // 아이디값이 일치하는 요소
+      // document.querySelector("#아이디값 / .클래스값 등 css선택자"); // 첫번째조건에 만족하는 요소
+      // document.querySelectorAll("css선택자"); // 배열
+
+      //   const h1 = document.getElementById("header");
+      const h1 = document.querySelector("#header");
+      console.log(h1);
+      // 태그 안 text 가져오기
+      console.log(h1.innerText);
+      console.log(h1.textContent);
+      // h1태그 안 태그정보도 가져오기
+      console.log(h1.innerHTML);
+      // id 속성 값 가져오기
+      console.log(h1.id);
+      // class 속성 값 가져오기
+      console.log(h1.classList);
+
+      // text 값 변경
+      //   h1.textContent = "ヘダー要素";
+      //   h1.innerHTML = "<i>ヘダー要素</i>";
+
+      // 버튼 클릭 시 h1 텍스트 변경
+      const btn = document.querySelector("button");
+      // 클릭 => 감시(이벤트 리스너)
+      btn.addEventListener("click", (e) => {
+        // console.log("이벤트 대상 ", e.target);
+        h1.innerHTML = "<i>ヘダー要素</i>";
+      });
+
+      // li 첫번째 요소 찾기
+      //   const li = document.querySelector("li");
+      const li = document.querySelector(".item");
+      console.log(li);
+
+      // 모든 li 찾기
+      const lis = document.querySelectorAll(".item");
+      lis.forEach((li) => {
+        console.log(li);
+      });
+    </script>
+  </body>
+</html>
