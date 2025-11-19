@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>The Light Blub</h2>
+      <button type="button">Turn on the light</button>
+      <img src="../img/pic_bulboff.gif" alt="" srcset="" />
+      <button type="button">Turn off the light</button>
+    </div>
+    <script>
+      // on button 클릭 시 bulb on, off button 클릭 시 bulb off (img 수정)
+      //   const onBtn = document.querySelector("div button:nth-child(2)");
+      //   const offBtn = document.querySelector("div button:last-child");
+      const img = document.querySelector("img");
+
+      //   onBtn.addEventListener("click", () => {
+      //     img.src = "../img/pic_bulbon.gif";
+      //   });
+
+      //   offBtn.addEventListener("click", () => {
+      //     img.src = "../img/pic_bulboff.gif";
+      //   });
+
+      const btns = document.querySelectorAll("button");
+
+      const onOff = (src) => {
+        img.src = src;
+      };
+      //   btns[0].addEventListener("click", () => onOff("../img/pic_bulbon.gif"));
+      //   btns[1].addEventListener("click", () => onOff("../img/pic_bulboff.gif"));
+
+      // 이벤트 버블링
+      const div = document.querySelector("div");
+      div.addEventListener("click", (e) => {
+        const evt = e.target;
+        console.log(evt);
+        // 어느 버튼에서 이벤트 발생?
+        if (evt.textContent.includes("on")) {
+          onOff("../img/pic_bulbon.gif");
+        } else {
+          onOff("../img/pic_bulboff.gif");
+        }
+      });
+    </script>
+  </body>
+</html>

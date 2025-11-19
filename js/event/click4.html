@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <div><input type="radio" name="gender" id="" value="남">남
+        <div><input type="radio" name="gender" id="" value="여">여
+        </div>
+    </form>
+    <script>
+        // const rods = document.querySelectorAll("[type='radio']");
+
+        // const changeColor = (color)=>{
+        //     document.body.style.backgroundColor=color;
+        // };
+
+        // rods.forEach(rdo => {
+        //     rdo.addEventListener("click",(e)=>{
+        //         console.log("현재 이벤트 처리 요소",e.currentTarget);
+        //         console.log(e.target.value);
+        //     });
+        // });
+
+        // 이벤트 버블링 이용
+        const form = document.querySelector("form");
+        form.addEventListener("click",(e)=>{
+            console.log("현재 이벤트 처리 요소", e.currentTarget);
+            console.log(e.target.value);
+        });
+    </script>
+</body>
+</html>

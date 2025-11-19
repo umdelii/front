@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div * {
+        padding: 10px;
+        margin: 10px;
+      }
+      [readonly] {
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>숫자 맞추기 게임</h3>
+    <p>
+      이 게임은 컴퓨터가 생성한 숫자를 맞추는 게임입니다. <br />
+      숫자는 1 ~ 100 사이에 있습니다.
+    </p>
+    <form action="" method="get">
+      <div>
+        <label for="num1">숫자</label>
+        <input type="text" name="num1" id="num1" size="5" />
+        <button type="button">확인</button>
+      </div>
+      <div>
+        <label for="count">추측횟수</label>
+        <input type="text" name="count" id="count" size="5" readonly />
+      </div>
+      <div>
+        <label for="hint">힌트</label>
+        <input type="text" name="hint" id="hint" readonly />
+      </div>
+    </form>
+    <script>
+      // 난수 생성(1~100)
+      const answer = Math.floor(Math.random() * 100 + 1);
+
+      // 추측횟수 변수
+      let countOfGuess = 0;
+      const count = document.getElementById("count");
+
+      // 확인 버튼 클릭 시 up,down
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", () => {
+        // num1 값 가져오기
+        const num1 = parseInt(document.querySelector("#num1").value);
+        console.log(num1); // 잘 가져왔나 확인만
+
+        // 추측횟수 += 1
+        countOfGuess = countOfGuess + 1;
+        count.value = countOfGuess;
+
+        // 힌트 : num1와 난수 비교
+        const hint = document.getElementById("hint");
+        if (num1 > answer) {
+          hint.value = "down";
+        } else if (num1 < answer) {
+          hint.value = "up";
+        } else if (num1 === answer) {
+          hint.value = "정답";
+          // 정답 시 확인 버튼 비활성화
+          btn.disabled = "true";
+        }
+      });
+    </script>
+  </body>
+</html>

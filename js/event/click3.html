@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <div><input type="radio" name="color" id="" value="lightblue">파랑
+        <div><input type="radio" name="color" id="" value="lightgreen">녹색
+        </div>
+    </form>
+    <script>
+        // js에서 css 설정하는 방법
+        // document.body.style.backgroundColor="green";
+
+        // 파랑, 녹색 선택 시 문서 배경색을 해당 색으로 변경
+
+        // 방법1
+        const rdos = document.querySelectorAll("[type='radio']");
+        // rdos[0].addEventListener('click',()=>{
+        //     document.body.style.backgroundColor="lightblue"
+        // });
+        // rdos[1].addEventListener('click',()=>{
+        //     document.body.style.backgroundColor="lightgreen"
+        // });
+
+        // 방법2
+        const changeColor = (color)=>{
+            document.body.style.backgroundColor=color;
+        }
+        
+        // rdos[0].addEventListener('click',()=>changeColor("lightblue"));
+        // rdos[1].addEventListener('click',()=>changeColor("lightgreen"));
+        
+        // 방법3
+        // rdos[0].addEventListener('click',(e)=>{
+            // e.target : 이벤트 대상
+            // changeColor(e.target.value);
+        // });
+        // rdos[1].addEventListener("click",(e)=>{
+            // changeColor(e.target.value);
+        // });
+
+        // 방법4
+        // rdos.forEach(rdo => {
+        //     rdo.addEventListener("click",(e)=>{
+        //     changeColor(e.target.value);
+        //     });
+        // });
+
+        // 방법5 : 이벤트 버블링 이용
+        const form = document.querySelector("form");
+        form.addEventListener("click",(e)=>{
+            changeColor(e.target.value);
+        });
+
+    </script>
+</body>
+</html>

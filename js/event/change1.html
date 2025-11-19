@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>input 변화 감지</h1>
+    <form action="" method="get">
+      <div>
+        <label for="name">이름</label
+        ><input type="text" name="name" id="name" />
+      </div>
+      <div>
+        <label for="email">이메일</label
+        ><input type="text" name="email" id="email" />
+      </div>
+      <div>
+        <label for="addr">주소</label
+        ><input type="text" name="addr" id="addr" />
+      </div>
+    </form>
+    <script>
+      // name 글자가 대문자라면 소문자로 변경
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const addr = document.getElementById("addr");
+      // input 요소 내용 변경 후 포커스를 빼면 발생하는 이벤트 : change
+      name.addEventListener("change", (e) => {
+        console.log(e.target);
+        console.log(e.target.value);
+        name.value = name.value.toLowerCase();
+        alert("name");
+      });
+
+      // 내용 변화와 상관없이 이벤트 발생 : blur
+      email.addEventListener("blur", (e) => {
+        email.value = email.value.toLowerCase();
+        // alert("email");
+      });
+
+      // 입력과 동시에 이벤트 발생 : input
+      addr.addEventListener("input", (e) => {
+        addr.value = addr.value.toLowerCase();
+      });
+    </script>
+  </body>
+</html>
