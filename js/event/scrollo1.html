@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 4000px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("scroll", () => {
+        // 스크롤 강제 위치 이동
+        window.scrollTo(0, 200);
+        console.log(window.scrollY);
+
+        // 현재 위치에서 300만큼 스크롤 이동
+        window.scrollBy(0, 300);
+        console.log(window.scrollY);
+      });
+    </script>
+  </body>
+</html>

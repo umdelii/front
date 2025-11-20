@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        height: 4000px;
+      }
+      span {
+        cursor: pointer;
+      }
+      .navbar {
+        width: 100%;
+        position: fixed;
+      }
+      .navbar-brand {
+        font-size: 20px;
+        transition: all 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark">Dark 🔄️</span>
+      </div>
+    </nav>
+    <script>
+      const nav = document.querySelector(".navbar");
+      nav.addEventListener("click", (e) => {
+        console.log(e.target);
+        const secSpan = e.target;
+        if (secSpan.classList.contains("badge")) {
+          if (secSpan.textContent.includes("Dark")) {
+            e.currentTarget.classList.replace("bg-light", "bg-dark");
+            secSpan.classList.replace("bg-dark", "bg-light");
+            secSpan.textContent = "Light 🔄️";
+            secSpan.classList.add("text-dark");
+            secSpan.previousElementSibling.classList.add("text-white");
+          } else {
+            e.currentTarget.classList.replace("bg-dark", "bg-light");
+            secSpan.classList.replace("bg-light", "bg-dark");
+            secSpan.textContent = "Dark 🔄️";
+            secSpan.classList.remove("text-dark");
+            secSpan.previousElementSibling.classList.remove("text-white");
+          }
+        }
+      });
+
+      const element = document.querySelector(".navbar-brand");
+      window.addEventListener("scroll", () => {
+        // 현재 창에서 스크롤이 1/2정도 내려왔을 때까지는 글자의 크기가 20px
+        // 다시 1/2 지점보다 내려가면 45px로 변경
+        // outerHeight 윈도우창 전체 높이, innerrHeight 웹페이지 화면의 높이
+        // console.log("window.outerHeight", window.outerHeight);
+        // console.log("window.innerHeight", window.innerHeight);
+
+        if (window.scrollY > window.innerHeight / 2) {
+          element.style.fontSize = "45px";
+        } else {
+          element.style.fontSize = "20px";
+        }
+      });
+    </script>
+  </body>
+</html>
