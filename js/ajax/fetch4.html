@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        padding: 0;
+      }
+      .container {
+        display: flex;
+        background-color: lightblue;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+      .container li {
+        margin: 0 10px;
+        flex: 1;
+        list-style: none;
+        cursor: pointer;
+      }
+      table {
+        border: 2px solid gray;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 2px solid lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>메뉴 1</li>
+      <li>메뉴 2</li>
+      <li>메뉴 3</li>
+      <li>메뉴 4</li>
+    </ul>
+    <div></div>
+    <script>
+      // version.json 가지고 내려오기
+      // 메뉴 1을 클릭하면 json data가 div에 출력되게 설정
+      document
+        .querySelector(".container li:nth-child(2)")
+        .addEventListener("click", () => {
+          fetch("https://umdelii.github.io/data/version2.json")
+            .then((response) => response.json())
+            .then((json) => {
+              console.log(json);
+
+              let result = `<ul>`;
+              json.forEach((item) => {
+                result += `<li>version : ${item.version}</li>`;
+                result += `<li>codename : ${item.codename}</li>`;
+              });
+              result += `</ul>`;
+
+              document
+                .querySelector("div")
+                .insertAdjacentHTML("afterbegin", result);
+            });
+        });
+
+      //  메뉴3 클릭 시
+      // https://jsonplaceholder.typicode.com/users
+      // id, name, email, address(street)만 출력하기
+      // table 형태로 보여주기
+      document
+        .querySelector(".container li:nth-child(3)")
+        .addEventListener("click", () => {
+          fetch("https://jsonplaceholder.typicode.com/users")
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+
+              let dataTable = `<table><tr><th class="id">Id</th><th class="name">Name</th><th class="email">Email</th><th class="address">Address</th></tr>`;
+              data.forEach((item) => {
+                dataTable += `<tr>`;
+                dataTable += `<td>${item.id}</td>`;
+                dataTable += `<td>${item.name}</td>`;
+                dataTable += `<td>${item.email}</td>`;
+                dataTable += `<td>${item.address.street}</td>`;
+                dataTable += `</tr>`;
+              });
+              dataTable += `</table>`;
+
+              document
+                .querySelector("div")
+                .insertAdjacentHTML("afterbegin", dataTable);
+            });
+        });
+    </script>
+  </body>
+</html>

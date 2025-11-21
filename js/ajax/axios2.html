@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+      axios
+        .get("https://umdelii.github.io/data/data.txt")
+        .then((response) => {
+          console.log("response", response);
+
+          const data = response.data;
+
+          document.querySelector("div").insertAdjacentHTML("afterbegin", data);
+        })
+        .catch((e) => console.log(e));
+      // then 안의 화살표 함수는 비동기 함수, 언제 불러올지 몰라.
+    </script>
+  </body>
+</html>

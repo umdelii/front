@@ -3,14 +3,25 @@
 // 다른 함수의 인자로 전달
 // 다른 함수의 리턴값으로 사용
 
+// 변수할당
 const func1 = () => {
   console.log("변수 할당");
 };
 func1();
 
+// 함수인자
 function logText(msg) {
   msg();
 }
 
 // logText() 호출하면서 함수를 전달인자로 사용
 logText(() => console.log("hi"));
+
+// return 값
+function add(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+const sum = add(5);
+console.log(sum(6));

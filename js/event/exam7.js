@@ -32,3 +32,5 @@ btns.forEach((btn, idx) => {
     showContent(idx);
   });
 });
+
+// orange도 idx로
