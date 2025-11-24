@@ -27,36 +27,34 @@ btn.addEventListener("click", () => {
   const date = txtYear.value + selMon.value + selDay.value;
   console.log(date);
   const url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=4cb70ff720190b15c359feb102373232&targetDt=${date}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
+  axios.get(url).then((response) => {
+    console.log(response.data);
 
-      // movieCd, movieNm, rank, rankInten 값 보고싶어
-      const dailyBoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
-      let contents = "";
-      dailyBoxOfficeList.forEach((item) => {
-        console.log(item.movieCd, item.movieNm, item.rank, item.rankInten);
+    // movieCd, movieNm, rank, rankInten 값 보고싶어
+    const dailyBoxOfficeList = response.data.boxOfficeResult.dailyBoxOfficeList;
+    let contents = "";
+    dailyBoxOfficeList.forEach((item) => {
+      console.log(item.movieCd, item.movieNm, item.rank, item.rankInten);
 
-        // 1 위키드: 포 굿 (0)
-        // 7 세계의 주인 (▲ 1) 이렇게 순위, 영화명, 순위등락 div 태그에 표현하기
-        contents += `${item.rank}위 `;
-        contents += `<a href = ${item.movieCd}>${item.movieNm}</a>`;
-        contents += `(`;
+      // 1 위키드: 포 굿 (0)
+      // 7 세계의 주인 (▲ 1) 이렇게 순위, 영화명, 순위등락 div 태그에 표현하기
+      contents += `${item.rank}위 `;
+      contents += `<a href = ${item.movieCd}>${item.movieNm}</a>`;
+      contents += `(`;
 
-        if (item.rankInten > 0) {
-          contents += `▲ ${item.rankInten})`;
-        } else if (item.rankInten < 0) {
-          contents += `▽ ${item.rankInten})`;
-        } else {
-          contents += `${item.rankInten})`;
-        }
+      if (item.rankInten > 0) {
+        contents += `▲ ${item.rankInten})`;
+      } else if (item.rankInten < 0) {
+        contents += `▽ ${item.rankInten})`;
+      } else {
+        contents += `${item.rankInten})`;
+      }
 
-        contents += `<br>`;
-      });
-
-      document.querySelector("#msg").innerHTML = contents;
+      contents += `<br>`;
     });
+
+    document.querySelector("#msg").innerHTML = contents;
+  });
 });
 
 // 영화제목 링크 클릭 시
@@ -78,36 +76,34 @@ document.querySelector("#msg").addEventListener("click", (e) => {
   const url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=4cb70ff720190b15c359feb102373232&movieCd=${movieCd}`;
 
   // movieNm, movieNmEn, showTm, genres, directors.peopleNm, actors.peopleNm
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      const movieInfo = data.movieInfoResult.movieInfo;
-      let content = "";
+  axios.get(url).then((response) => {
+    console.log(response.data);
+    const movieInfo = response.data.movieInfoResult.movieInfo;
+    let content = "";
 
-      content += `<h4>영화정보</h4><ul>`;
-      content += `<li>영화이름 : ${movieInfo.movieNm}</li>`;
-      content += `<li>영문영화이름 : ${movieInfo.movieNmEn} </li>`;
-      content += `<li>런닝타임 : ${movieInfo.showTm}분 </li>`;
+    content += `<h4>영화정보</h4><ul>`;
+    content += `<li>영화이름 : ${movieInfo.movieNm}</li>`;
+    content += `<li>영문영화이름 : ${movieInfo.movieNmEn} </li>`;
+    content += `<li>런닝타임 : ${movieInfo.showTm}분 </li>`;
 
-      content += `<li>장르 : `;
-      movieInfo.genres.forEach((genre) => {
-        content += `${genre.genreNm} `;
-      });
-      content += `</li>`;
-
-      content += `<li>감독 : `;
-      movieInfo.directors.forEach((director) => {
-        content += `${director.peopleNm}`;
-      });
-      content += `</li>`;
-
-      content += `<li>출연배우 <ul>`;
-      movieInfo.actors.forEach((actor) => {
-        content += `<li>${actor.peopleNm}</li>`;
-      });
-      content += `</ul></li>`;
-
-      document.querySelector("#detail").innerHTML = content;
+    content += `<li>장르 : `;
+    movieInfo.genres.forEach((genre) => {
+      content += `${genre.genreNm} `;
     });
+    content += `</li>`;
+
+    content += `<li>감독 : `;
+    movieInfo.directors.forEach((director) => {
+      content += `${director.peopleNm}`;
+    });
+    content += `</li>`;
+
+    content += `<li>출연배우 <ul>`;
+    movieInfo.actors.forEach((actor) => {
+      content += `<li>${actor.peopleNm}</li>`;
+    });
+    content += `</ul></li>`;
+
+    document.querySelector("#detail").innerHTML = content;
+  });
 });
