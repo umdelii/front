@@ -31,8 +31,11 @@ $ : ~로 끝나는
 (on|ues|rida) : 그룹으로 묶기 + ||
 \1	backreference to group #1
 (?:abc)	non-capturing group
-(?=abc)	positive lookahead
-(?!abc)	negative lookahead
+전방탐색
+    (?=abc)	positive lookahead : c를 패턴검색에는 사용하지만, 결과를 돌려받을 때는 ab만 돌려받음
+    (?!abc)	negative lookahead
+후방탐색
+?<=
 
 개수 지정
 + : 최소 1 ~ 무한대
