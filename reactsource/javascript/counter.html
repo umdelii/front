@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>0</h1>
+    <button type="button" class="increase">+</button>
+    <button type="button" class="decrease">-</button>
+    <script>
+      // + => h1 + 1
+      // - => h1 - 1
+      let counter = 0;
+
+      const increase = (e) => {
+        if (e.target.classList.contains("increase")) {
+          console.log("click +1");
+          counter += 1;
+        }
+        if (e.target.classList.contains("decrease")) {
+          console.log("click -1");
+          counter -= 1;
+        }
+
+        document.querySelector("h1").innerHTML = counter;
+      };
+      const inBtn = document
+        .querySelector(".increase")
+        .addEventListener("click", increase);
+      const deBtn = document
+        .querySelector(".decrease")
+        .addEventListener("click", increase);
+    </script>
+  </body>
+</html>
