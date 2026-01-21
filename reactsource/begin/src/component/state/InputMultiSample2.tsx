@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../App.css";
 
-function InputMultiSample() {
+function InputMultiSample2() {
   const [inputs, setInputs] = useState<{ name: string; nickname: string }>({
     name: "",
     nickname: "",
@@ -23,7 +23,7 @@ function InputMultiSample() {
     <>
       <input
         type="text"
-        name=""
+        name="name"
         id=""
         className="border-2 p-1.5"
         onChange={handleChange}
@@ -32,7 +32,7 @@ function InputMultiSample() {
       />
       <input
         type="text"
-        name=""
+        name="nickname"
         id=""
         className="border-2 p-1.5"
         onChange={handleChange}
@@ -42,8 +42,10 @@ function InputMultiSample() {
       <button
         className="bg-cyan-600 p-2"
         onClick={() => {
-          setName("");
-          setNickname("");
+          setInputs({
+            name: "",
+            nickname: "",
+          });
         }}
       >
         초기화
@@ -57,4 +59,4 @@ function InputMultiSample() {
   );
 }
 
-export default InputMultiSample;
+export default InputMultiSample2;
