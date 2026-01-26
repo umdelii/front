@@ -6,6 +6,7 @@ function LifeCycle2() {
 
   useEffect(() => {
     console.log("1. Mounted");
+    console.log(count1);
 
     return () => console.log("3. Unmounted");
   }, [count1, count2]);

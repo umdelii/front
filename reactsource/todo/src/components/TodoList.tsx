@@ -1,10 +1,10 @@
-import type { Todo, TodoCreate } from "../types/todo";
+import type { Todos } from "../types/todo";
 import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ todos, onDeleteTodo, onChangeTodo }) => {
+const TodoList = ({ todos, onDeleteTodo, onChangeTodo }: Todos) => {
   return (
     <div>
-      {todos.map((todo) => (
+      {todos.dtoList.map((todo) => (
         <TodoListItem
           todo={todo}
           key={todo.id}

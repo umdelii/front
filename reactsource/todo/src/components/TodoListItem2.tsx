@@ -3,10 +3,10 @@ import {
   MdCheckBoxOutlineBlank,
   MdRemoveCircleOutline,
 } from "react-icons/md";
+import type { Todo, TodoCreate } from "../types/todo";
 import { useState } from "react";
-import type { ListItemProps } from "../types/todo";
 
-const TodoListItem = ({ todo, onDeleteTodo, onChangeTodo }: ListItemProps) => {
+const TodoListItem2 = ({ todo, onDeleteTodo, onChangeTodo }) => {
   const [isCompleted, setIsCompleted] = useState(todo.completed);
 
   const checkClick = () => {
@@ -38,4 +38,4 @@ const TodoListItem = ({ todo, onDeleteTodo, onChangeTodo }: ListItemProps) => {
   );
 };
 
-export default TodoListItem;
+export default TodoListItem2;

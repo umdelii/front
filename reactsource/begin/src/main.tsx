@@ -4,6 +4,11 @@ import "./index.css";
 import TaskApp from "./component/reducer/TaskApp.tsx";
 import Memo from "./component/memo/Memo.tsx";
 import Parent from "./component/memo/Parent.tsx";
+import LifeCycle2 from "./component/effect/LifeCycle2.tsx";
+import Navbar from "./router/declarative/Navbar.tsx";
+import { BrowserRouter, RouterProvider } from "react-router-dom";
+import router from "./router/data/routes.ts";
+import Consumer from "./context/Consumer.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -37,6 +42,11 @@ createRoot(document.getElementById("root")!).render(
     {/* <UserApp2 /> */}
     {/* <TaskApp /> */}
     {/* <Memo /> */}
-    <Parent />
+    {/* <Parent /> */}
+    {/* <BrowserRouter>
+      <Navbar />
+    </BrowserRouter> */}
+    {/* <RouterProvider router={router} /> */}
+    <Consumer />
   </StrictMode>,
 );
