@@ -9,6 +9,14 @@ import Navbar from "./router/declarative/Navbar.tsx";
 import { BrowserRouter, RouterProvider } from "react-router-dom";
 import router from "./router/data/routes.ts";
 import Consumer from "./context/Consumer.tsx";
+import { AuthProvider } from "./router/data/AuthContext.tsx";
+import { Provider } from "react-redux";
+import App from "./App.tsx";
+import MyTodo from "./redux/component/MyTodo.tsx";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReduer from "./redux/modules/index.ts";
+
+const store = configureStore({ reducer: rootReduer });
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -46,7 +54,12 @@ createRoot(document.getElementById("root")!).render(
     {/* <BrowserRouter>
       <Navbar />
     </BrowserRouter> */}
-    {/* <RouterProvider router={router} /> */}
-    <Consumer />
+    {/* <Provider>
+      <RouterProvider router={router} />
+    </Provider> */}
+    <Provider store={store}>
+      <MyTodo />
+    </Provider>
+    {/* <Consumer /> */}
   </StrictMode>,
 );
