@@ -1,13 +1,13 @@
-import Counter from "./Counter";
-import Todos from "./Todos";
+import CounterContainer from "../container/CounterContainer";
+import TodosContainer from "../container/TodosContainer";
 
 function MyTodo() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <Counter number={0} />
+        <CounterContainer />
         <hr />
-        <Todos />
+        <TodosContainer />
       </div>
     </>
   );
