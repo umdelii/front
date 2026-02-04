@@ -1,13 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import type { RootState } from "../../reducers/store";
-import { logout } from "../../reducers/loginSlice";
+import useLogin from "../../hooks/useLogin";
 
 const NavBar = () => {
-  const authState = useSelector((state: RootState) => state.auth);
-  const dispatch = useDispatch();
+  const { doLogout, moveToPath, isLogin } = useLogin();
   const logoutState = () => {
-    dispatch(logout());
+    doLogout();
+    alert("로그아웃 완료");
+    moveToPath("/");
   };
 
   return (
@@ -19,7 +18,7 @@ const NavBar = () => {
             Home
           </Link>
         </li>
-        {authState.email ? (
+        {isLogin ? (
           <>
             <li>
               <Link

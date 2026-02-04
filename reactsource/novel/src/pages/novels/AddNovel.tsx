@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
 import NovelForm from "../../components/novels/NovelForm";
 import BasicLayout from "../../layouts/BasicLayout";
 import { postNovel } from "../../apis/novelApis";
 import { initialNovel, type Novel } from "../../types/book";
+import useLogin from "../../hooks/useLogin";
 
 const AddNovel = () => {
-  const navigate = useNavigate();
+  const { isLogin, moveToLogin, navigate } = useLogin();
 
   const handleCancel = () => {
     // 이전 페이지 이동
@@ -23,6 +23,8 @@ const AddNovel = () => {
       console.log(error);
     }
   };
+
+  if (!isLogin) return moveToLogin();
 
   return (
     <BasicLayout>

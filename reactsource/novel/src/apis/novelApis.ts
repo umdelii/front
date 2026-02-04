@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import type { Novel, NovelPut, PageRequestDTO } from "../types/book";
+import jwtAxios from "../utils/jwtUtil";
 
 export const API_SERVER_HOST = "http://localhost:8080/api/novels";
 
@@ -26,7 +27,7 @@ export const getRow = async (id: string) => {
 
 // update 2(available)
 export const putAvailable = async (novelObj: NovelPut) => {
-  const res = await axios.put(
+  const res = await jwtAxios.put(
     `${API_SERVER_HOST}/available/${novelObj.id}`,
     novelObj,
   );
@@ -35,18 +36,18 @@ export const putAvailable = async (novelObj: NovelPut) => {
 
 // update (available & genre)
 export const putRow = async (novel: Novel) => {
-  const res = await axios.put(`${API_SERVER_HOST}/edit/${novel.id}`, novel);
+  const res = await jwtAxios.put(`${API_SERVER_HOST}/edit/${novel.id}`, novel);
   return res.data;
 };
 
 // delete
 export const deleteOne = async (id: number) => {
-  const res = await axios.delete(`${API_SERVER_HOST}/${id}`);
+  const res = await jwtAxios.delete(`${API_SERVER_HOST}/${id}`);
   return res.data;
 };
 
 // create
 export const postNovel = async (novel: Novel) => {
-  const res = await axios.post(`${API_SERVER_HOST}/add`);
+  const res = await jwtAxios.post(`${API_SERVER_HOST}/add`, novel);
   return res.data;
 };

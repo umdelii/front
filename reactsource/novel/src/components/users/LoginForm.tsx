@@ -1,8 +1,6 @@
 import type React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { login } from "../../reducers/loginSlice";
+import useLogin from "../../hooks/useLogin";
 
 const initialState = {
   email: "",
@@ -10,16 +8,24 @@ const initialState = {
 };
 
 function LoginForm() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const [loginParam, setLoginParam] = useState(initialState);
   const { email, password } = loginParam;
+  const { doLogin, moveToPath } = useLogin();
 
-  const handleSubmit = (e: React.SubmitEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     console.log(loginParam);
-    dispatch(login(loginParam));
+    // dispatch(login(loginParam));
+
+    try {
+      const data = await doLogin(loginParam);
+      if (data?.accessToken) {
+        alert("로그인 성공");
+        moveToPath("/");
+      }
+    } catch (error) {
+      alert("이메일과 비밀번호를 확인해주세요");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +66,7 @@ function LoginForm() {
           <button
             type="button"
             className="mx-1 my-6 rounded-[3px] bg-red-700 px-4.5 py-3 text-[1.2em] text-white hover:bg-red-900"
-            onClick={() => navigate("../register")}
+            onClick={() => moveToPath("../register")}
           >
             Register
           </button>

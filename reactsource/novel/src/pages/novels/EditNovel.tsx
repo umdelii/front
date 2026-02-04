@@ -6,13 +6,14 @@ import Error from "../../components/common/Error";
 import Loading from "../../components/common/Loading";
 import type { Novel } from "../../types/book";
 import { putRow } from "../../apis/novelApis";
+import useLogin from "../../hooks/useLogin";
 
 const EditNovel = () => {
   // id 가져오기
   const { id } = useParams<{ id: string }>();
   // 서버로 novel 요청
   const { serverData, loading, error } = useNovel(id);
-  const navigate = useNavigate();
+  const { isLogin, moveToLogin, navigate } = useLogin();
 
   const handleCancel = (id: number) => {
     // 이전 페이지 이동
@@ -30,6 +31,8 @@ const EditNovel = () => {
       console.log(error);
     }
   };
+
+  if (!isLogin) return moveToLogin();
 
   if (error) return <Error />;
 
