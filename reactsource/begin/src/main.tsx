@@ -15,6 +15,7 @@ import App from "./App.tsx";
 import MyTodo from "./redux/component/MyTodo.tsx";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReduer from "./redux/modules/index.ts";
+import CopyWriter from "./openai/CopyWriter.tsx";
 
 // store : 애플리케이션 당 하나의 스토어
 // 데이터 공유 목적
@@ -59,9 +60,10 @@ createRoot(document.getElementById("root")!).render(
     {/* <Provider>
       <RouterProvider router={router} />
     </Provider> */}
-    <Provider store={store}>
+    {/* <Provider store={store}>
       <MyTodo />
-    </Provider>
+    </Provider> */}
     {/* <Consumer /> */}
+    <CopyWriter />
   </StrictMode>,
 );
