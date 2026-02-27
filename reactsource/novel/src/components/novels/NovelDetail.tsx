@@ -1,10 +1,40 @@
 import { useNavigate } from "react-router-dom";
-import { deleteOne } from "../../apis/novelApis";
+import { deleteOne, getAiDecs } from "../../apis/novelApis";
 import type { Novel } from "../../types/book";
 import { getBookEmoji, renderStars } from "../../utils/novelUtil";
+import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
 
 const NovelDetail = ({ novel }: { novel: Novel }) => {
   const navigate = useNavigate();
+
+  //-----------------  LLM 모델 추가
+  const [aiDescription, setAiDescription] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  // 로그인 정보
+  const { authState } = useLogin();
+  let roleName = "";
+  if (authState.roles.includes("ADMIN")) roleName = "ADMIN";
+
+  const handleGenerate = async (id: number) => {
+    try {
+      setIsGenerating(!isGenerating);
+      const data = await getAiDecs(id);
+      console.log(data);
+      setAiDescription(data.aiDescription);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsGenerating(!isGenerating);
+    }
+  };
+
+  const description = novel.aiDescription?.trim()
+    ? novel.aiDescription
+    : aiDescription;
+
+  // ------------------------- LLM
 
   const deleteRow = async (id: number) => {
     try {
@@ -51,7 +81,43 @@ const NovelDetail = ({ novel }: { novel: Novel }) => {
         </div>
         <div className="text-[8.6em]">{getBookEmoji(novel.id)}</div>
       </section>
+      <section className="mt-6 flex border-t border-neutral-200 p-5">
+        <p className="my1 25 w-full">
+          <strong>Plot</strong>
+          <textarea
+            name="plot"
+            rows={5}
+            readOnly
+            className="w-full resize-none rounded-lg border border-gray-300 p-3 text-sm"
+          >
+            {novel.plot}
+          </textarea>
+        </p>
+      </section>
+      {!isGenerating && description && (
+        <section className="mt-6 flex border-t border-neutral-200 p-5">
+          <p className="25 my-1 w-full">
+            <strong>Description</strong>
+            <textarea
+              name="description"
+              rows={5}
+              readOnly
+              className="w-full resize-none rounded-lg border border-gray-300 p-3 text-sm"
+            >
+              {novel.aiDescription}
+            </textarea>
+          </p>
+        </section>
+      )}
       <section className="text-center">
+        {!description && roleName === "ADMIN" && (
+          <button
+            onClick={() => handleGenerate(novel.id)}
+            className="mx-1 my-6 rounded-[5px] bg-emerald-600 px-4 py-3 text-[1.2em] text-white hover:bg-emerald-900"
+          >
+            Create AI Description
+          </button>
+        )}
         <button
           onClick={() => navigate(`../edit/${novel.id}`)}
           className="mx-1 my-6 rounded-[5px] bg-sky-600 px-4 py-3 text-[1.2em] text-white hover:bg-sky-900"

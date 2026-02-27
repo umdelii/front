@@ -9,7 +9,9 @@ const NovelForm = ({ novel, onCancel, onSubmit }) => {
   const [formData, setFormData] = useState<Novel>(novel);
   console.log(formData);
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => {
     const target = e.target;
     const { name } = target;
@@ -68,6 +70,14 @@ const NovelForm = ({ novel, onCancel, onSubmit }) => {
         value={formData.publishedDate || ""}
         onChange={handleChange}
       />
+      <textarea
+        name="plot"
+        placeholder="Plot"
+        rows={3}
+        value={formData.plot || ""}
+        onChange={handleChange}
+        className="rounded-xs border-2 border-stone-300 p-2"
+      ></textarea>
       <input
         name="rating"
         type="number"

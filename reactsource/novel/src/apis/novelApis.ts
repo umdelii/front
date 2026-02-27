@@ -51,3 +51,10 @@ export const postNovel = async (novel: Novel) => {
   const res = await jwtAxios.post(`${API_SERVER_HOST}/add`, novel);
   return res.data;
 };
+
+// ai 생성글 추가
+export const getAiDecs = async (id: number) => {
+  const res = await jwtAxios.get(`${API_SERVER_HOST}/ai-description/${id}`);
+  console.log("서버 도착", res);
+  return res.data;
+};

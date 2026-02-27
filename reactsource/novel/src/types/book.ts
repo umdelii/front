@@ -9,6 +9,8 @@ export const initialNovel = {
   genreName: "",
   rating: 0,
   email: "",
+  plot: "",
+  aiDescription: "",
 };
 
 export type Novel = {
@@ -22,6 +24,8 @@ export type Novel = {
   genreName: string;
   rating: number;
   email: string;
+  plot: string;
+  aiDescription: string;
 };
 
 export type NovelPost = Omit<Novel, "id">;
